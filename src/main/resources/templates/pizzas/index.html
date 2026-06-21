@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzas</title>
+    <th:block th:replace="~{fragments/links :: linksHead}"></th:block>
+</head>
+
+<body>
+    <div th:replace="~{fragments/navbar :: headerNavbar}"></div>
+
+
+    
+    <div class="container">
+        <h1 class="text-center">Pizzas</h1>
+        <div class="row row-cols-4" th:if="${pizzas.size() > 0}">
+            <div class="col my-2" th:each="pizza : ${pizzas}" th:object="${pizza}">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="*{url}" class="card-img-top" th:alt="*{name}">
+                    <div class="card-body">
+                        <h4 class="card-title">[[*{name}]]</h4>
+                        <h5>[[*{price}]] €</h5>
+                        <p class="card-text">Ingredienti: [[*{description}]]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p th:unless="${pizzas.size() > 0}">Non ci sono pizze presenti</p>
+    </div>
+
+
+
+
+
+
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+
+</html>
