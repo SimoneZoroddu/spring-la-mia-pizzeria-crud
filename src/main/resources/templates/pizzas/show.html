@@ -14,7 +14,24 @@
 
 
 
-    <h1>Singola Pizza</h1>
+    
+    <div class="container">
+        <h1>Singola Pizza</h1>
+        <div class="row">
+            <div class="col">
+                <div class="col" th:object="${pizza}">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="*{url}" class="card-img-top" th:alt="*{name}">
+                    <div class="card-body">
+                        <h4 class="card-title">[[*{name}]]</h4>
+                        <h5>[[*{price}]] €</h5>
+                        <p class="card-text">Ingredienti: [[*{description}]]</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
 
 
 

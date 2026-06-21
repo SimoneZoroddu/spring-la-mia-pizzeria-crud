@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequestMapping("/pizzas")
@@ -23,6 +24,15 @@ public class PizzaController {
         System.out.println("Pizze trovate: " + pizzas.size());
         model.addAttribute("pizzas", pizzas);
         return "pizzas/index";
+    }
+
+    @GetMapping("/{id}")
+    public String show(@PathVariable("id") int id, Model model) {
+
+        Pizza pizza = repository.findById(id).orElseThrow();
+
+        model.addAttribute("pizza", pizza);
+        return "pizzas/show";
     }
 
 }
