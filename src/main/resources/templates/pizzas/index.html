@@ -15,6 +15,7 @@
 
     <div class="container">
         <h1 class="text-center">Pizzas</h1>
+        <a th:href="@{pizzas/create}">Crea una nuova pizza</a>
         <form action="/pizzas" method="get">
             <input type="text" name="keyword" placeholder="Cerca pizza...">
             <button type="submit">Cerca</button>
