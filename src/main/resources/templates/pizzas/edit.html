@@ -16,11 +16,11 @@
 
 
     <div class="container">
-        <h1>Crea una nuova pizza</h1>
+        <h1>Modifica una pizza</h1>
         <div class="row">
             <div class="col">
 
-                <form th:action="@{/pizzas/create}" method="post" id="pizza-form" th:object="${pizza}">
+                <form th:action="@{/pizzas/edit/{id}(id=${pizza.id})}" method="post" id="pizza-form" th:object="${pizza}">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome della Pizza</label>
                         <input type="text" id="name" class="form-control" th:field="*{name}"

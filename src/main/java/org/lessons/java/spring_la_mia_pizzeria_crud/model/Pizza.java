@@ -2,6 +2,8 @@ package org.lessons.java.spring_la_mia_pizzeria_crud.model;
 
 import java.math.BigDecimal;
 
+import org.hibernate.validator.constraints.URL;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,6 +13,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "pizza")
@@ -21,12 +24,15 @@ public class Pizza {
     private Integer id;
 
     @NotBlank(message = "Il nome é obbligatorio")
+    @Size(max = 100, message = "Il nome puó contenere massimo 100 caratteri")
     private String name;
 
     @Lob
+    @Size(min = 10, max = 500, message = "La descrizione deve contenere tra 10 e 500 caratteri")
     private String description;
 
     @NotBlank(message = "URL Obbligatorio")
+    @URL(message = "Inserisci un URL valido")
     private String url;
 
     @NotNull(message = "Inserisci un prezzo")

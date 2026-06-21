@@ -30,6 +30,38 @@
                         <p class="card-text">Ingredienti: [[*{description}]]</p>
                     </div>
                     <a th:href="@{/pizzas/{idPizzas}(idPizzas=*{id})}" class="btn btn-primary">Vedi Dettagli</a>
+                    <a th:href="@{/pizzas/edit/{idPizzas}(idPizzas=*{id})}" class="btn btn-warning">Modifica Pizza</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        th:data-bs-target="'#modal-' + *{id}">
+                        Delete Pizza
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" th:id="'modal-' + *{id}" tabindex="-1" aria-hidden="true" th:aria-labelledby="'modalLabel-' + *{id}">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" th:id="'modal-' + *{id}">Vuoi Eliminare tale pizza?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Sei sicuro di voler distruggere [[*{name}]]
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Close
+                                    </button>
+                                    <form th:action="@{/pizzas/delete/{id}(id=*{id})}" method="post">
+                                        <button type="submit" class="btn btn-danger">
+                                            Distruggi la pizza
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,6 +75,7 @@
 
 
     <div th:replace="~{fragments/footer :: footer}"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
