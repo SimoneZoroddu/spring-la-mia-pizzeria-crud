@@ -12,9 +12,13 @@
     <div th:replace="~{fragments/navbar :: headerNavbar}"></div>
 
 
-    
+
     <div class="container">
         <h1 class="text-center">Pizzas</h1>
+        <form action="/pizzas" method="get">
+            <input type="text" name="keyword" placeholder="Cerca pizza...">
+            <button type="submit">Cerca</button>
+        </form>
         <div class="row row-cols-4" th:if="${pizzas.size() > 0}">
             <div class="col my-2" th:each="pizza : ${pizzas}" th:object="${pizza}">
                 <div class="card" style="width: 18rem;">
