@@ -23,8 +23,8 @@
                 <form th:action="@{/pizzas/create}" method="post" id="pizza-form" th:object="${pizza}">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome della Pizza</label>
-                        <input type="text" id="name" class="form-control" th:field="*{name}"
-                            th:errorClass="is-invalid" maxlength="100">
+                        <input type="text" id="name" class="form-control" th:field="*{name}" th:errorClass="is-invalid"
+                            maxlength="100">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">
                             <ul>
                                 <li th:each="error : ${#fields.errors('name')}" th:text="${error}"></li>
@@ -33,8 +33,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="url" class="form-label">URL</label>
-                        <input type="url" id="url" class="form-control" th:field="*{url}"
-                            th:errorClass="is-invalid">
+                        <input type="url" id="url" class="form-control" th:field="*{url}" th:errorClass="is-invalid">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('url')}">
                             <ul>
                                 <li th:each="error : ${#fields.errors('url')}" th:text="${error}"></li>
@@ -53,8 +52,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Prezzo</label>
-                        <input type="number" id="price" class="form-control" min="0"
-                            th:field="*{price}" th:errorClass="is-invalid">
+                        <input type="number" id="price" class="form-control" min="0" step="0.01" th:field="*{price}"
+                            th:errorClass="is-invalid">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('price')}">
                             <ul>
                                 <li th:each="error : ${#fields.errors('price')}" th:text="${error}"></li>
